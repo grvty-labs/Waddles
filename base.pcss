@@ -1,0 +1,18 @@
+@import './settings';
+
+body, html {
+  font-size: var(--global-font-size);
+  font-family: var(--main-font);
+  line-height: var(--global-lineheight);
+  color: var(--body-font-color);
+  background-color: var(--main-pane-background);
+
+  & :any-link{
+    color: var(--main-link-color);
+    text-decoration: none;
+
+    &.secondary{
+      color: var(--secondary-link-color);
+    }
+  }
+}
