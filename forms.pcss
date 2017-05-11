@@ -1,36 +1,48 @@
-input{
+.input-atom {
+  label {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  input,
+  select {
+    border-bottom: 1px var(--input-border-color) solid;
+  }
+
+  small {
+    &.error {
+      color: var(--alert);
+    }
+  }
+}
+
+input,
+select {
   background-color: transparent;
   border: none;
   outline: none;
   padding: 16px;
   padding-bottom: calc(1.5rem*.5);
   padding-top: calc(1.5rem*.5);
+  transition: border .4s ease-in-out;
+  width: calc(100% - 32px);
 
   &::placeholder {
     font-weight: lighter;
   }
 
-  &:--enter-action, &:hover {
-    background-color: var(--input-focus);
-    transition: background-color .3s ease-in;
+  &:--enter-action {
+    border-bottom: 1px var(--input-border-color-focus) solid;
   }
-}
 
-.input-atom {
+  &:hover {
+    border-bottom: 1px var(--input-border-color-hover) solid;
+  }
 
-  & label {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-
-    & input {
-      border-bottom: var(--input-border-color) 1px solid;
-    }
-
-    & small {
-      &.error {
-        color: var(--alert);
-      }
-    }
+  &:--enter-action,
+  &:hover {
+    background-color: var(--input-focus);
+    transition: background-color .3s ease-in, border .4s ease-in-out;
   }
 }
