@@ -3,7 +3,8 @@
   flex-direction: column;
 
   input,
-  select {
+  select,
+  textarea {
     border-bottom: 1px var(--input-border-color) solid;
   }
 
@@ -19,13 +20,15 @@
 }
 
 input,
-select {
+select,
+textarea {
   background-color: transparent;
   border: none;
   outline: none;
   padding: 16px;
   padding-bottom: calc(1.5rem*.5);
   padding-top: calc(1.5rem*.5);
+  resize: none;
   transition: border .4s ease-in-out;
   width: calc(100% - 32px);
 
@@ -33,16 +36,16 @@ select {
     font-weight: lighter;
   }
 
-  &:--enter-action {
-    border-bottom: 1px var(--input-border-color-focus) solid;
-  }
-
   &:hover {
     border-bottom: 1px var(--input-border-color-hover) solid;
   }
 
-  &:--enter-action,
-  &:hover {
+  &:--enter-action {
+    border-bottom: 1px var(--input-border-color-focus) solid;
+  }
+
+  &:hover,
+  &:--enter-action {
     background-color: var(--input-focus);
     transition: background-color .3s ease-in, border .4s ease-in-out;
   }
