@@ -4,37 +4,43 @@
 }
 
 :--button {
-    border: none;
-    border-radius: var(--global-border-radius);
-    outline: none;
-    cursor: pointer;
+  border: none;
+  border-radius: var(--global-border-radius);
+  outline: none;
+  cursor: pointer;
 
-    &.main {
-      color: var(--main-button-color);
-      background-color: var(--main-button-background);
-      padding: var(--main-button-padding);
-      text-transform: uppercase;
-    }
+  &.main {
+    color: var(--main-button-color);
+    background-color: var(--main-button-background);
+    padding: var(--main-button-padding);
+    text-transform: uppercase;
+  }
 
-    &.discrete {
-      color: var(--discrete-button-color);
-      background-color: var(--discrete-button-background);
-      padding: var(--main-button-padding);
-    }
+  &.discrete {
+    color: var(--discrete-button-color);
+    background-color: var(--discrete-button-background);
+    padding: var(--main-button-padding);
+  }
 
-    &.w-icon {
-      & i {
-        margin-right: 16px;
-      }
+  &.w-icon {
+    & i {
+      margin-right: 16px;
     }
+  }
 
-    &.secondary {
-      color: var(--secondary-button-color);
-      background-color: var(--secondary-button-background);
-      padding: var(--secondary-button-padding);
-    }
+  &.secondary {
+    color: var(--secondary-button-color);
+    background-color: var(--secondary-button-background);
+    padding: var(--secondary-button-padding);
+  }
 
-    &.link {
-      color: var(--main-link-color);
-    }
+  &.link {
+    color: var(--main-link-color);
+  }
+
+  &:--disabled {
+    color: var(--disabled-button-color);
+    background-color: var(--disabled-button-background);
+
+  }
 }

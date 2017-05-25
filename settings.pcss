@@ -50,9 +50,14 @@
     --discrete-button-background: color(var(--white) alpha(-58%));
     --discrete-button-color: var(--mine-shaft);
 
+    --disabled-button-background: color(var(--white) alpha(-58%));
+    --disabled-button-color: var(--mine-shaft);
+
     --label-color: var(--tundora);
     --placeholder-color: var(--tundora);
     --input-border-color: var(--gray);
+    --input-border-color-focus: var(--boston-blue);
+    --input-border-color-hover: var(--pale-sky);
     --input-focus: color( var(--mystic) alpha(-40%));
 
     --table-header-background: var(--mystic);
@@ -60,6 +65,13 @@
     --table-background: var(--white);
     --table-color: var(--mine-shaft);
     --table-border: var(--geyser);
+
+    --pagination-li-color: var(--boston-blue);
+    --pagination-li-background: var(--white);
+    --pagination-action-color: var(--white);
+    --pagination-action-background: var(--boston-blue);
+    --pagination-active-color: var(--white);
+    --pagination-active-background: var(--boston-blue);
 
 
     /* Text variables */
@@ -85,6 +97,7 @@
 @custom-selector :--text-container span, p, a;
 @custom-selector :--enter-action :focus, :active;
 @custom-selector :--button .button, button;
+@custom-selector :--disabled .disabled, :disabled;
 @custom-selector :--inputs textarea, input;
 
 /* Media Queries */
