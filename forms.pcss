@@ -50,4 +50,9 @@ textarea {
     background-color: var(--input-focus);
     transition: background-color .3s ease-in, border .4s ease-in-out;
   }
+
+  &:--disabled {
+    border-bottom: 1px var(--input-border-color) solid;
+    background-color: transparent;
+  }
 }

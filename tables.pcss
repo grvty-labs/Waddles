@@ -99,6 +99,12 @@ table {
       font-size: 0.8rem;
       margin: 5px 8px;
       padding: 1px 5px;
+
+      &:--disabled {
+        background-color: var(--pagination-disabled-background);
+        color: var(--pagination-disabled-color);
+        cursor: default;
+      }
     }
   }
 }
