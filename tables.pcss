@@ -46,10 +46,17 @@ table {
 }
 
 .pagination {
+  align-items: center;
   display: flex;
-  justify-content: center;
-  margin: 1rem 10%;
-  width: 80%;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin: 1rem 0;
+  width: 100%;
+
+  .legend {
+    font-weight: bolder;
+    margin-right: 1rem;
+  }
 
   /*@include breakpoint(small down) {
     padding: 1% 5%;
