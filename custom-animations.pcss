@@ -156,3 +156,30 @@
   -webkit-animation-name: noBG;
   animation-name: noBG;
 }
+
+@-webkit-keyframes spin {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: rgb(134, 134, 134);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
