@@ -1,0 +1,117 @@
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  thead {
+    font-size: .6875rem;
+    text-transform: uppercase;
+    background-color: var(--table-header-background);
+    color: var(--table-header-color);
+
+    tr th {
+      height: calc(1.5rem*2.5);
+      margin: 0;
+      text-align: left;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  tbody {
+    font-size: .833125rem;
+    background-color: var(--table-background);
+    color: var(--table-color);
+
+    tr {
+      height: calc(1.5rem*2.5);
+      border-bottom: var(--table-border) solid 1px;
+      text-align: left;
+
+      td {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      &:last-child {
+        height: calc(1.5rem*3);
+        border-bottom: 0;
+
+        & td {
+          padding-bottom: calc(1.5rem*.5);
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin: 1rem 0;
+  width: 100%;
+
+  .legend {
+    font-weight: bolder;
+    margin-right: 1rem;
+  }
+
+  /*@include breakpoint(small down) {
+    padding: 1% 5%;
+    width: 100%;
+  }*/
+
+  ul {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-radius: 100px;
+      align-items: center;
+      background-color: var(--pagination-li-background);
+      color: var(--pagination-li-color);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      margin: 5px;
+      min-height: 30px;
+      min-width: 30px;
+      padding: 5px;
+
+      &.active {
+        background-color: var(--pagination-active-background);
+        color: var(--pagination-active-color);
+      }
+
+      /*&:first-child,
+      &:last-child {
+        border: 0;
+        color: magenta;
+        margin: 0;
+      }*/
+    }
+
+    .previous,
+    .next {
+      border-radius: 3px;
+      background-color: var(--pagination-action-background);
+      color: var(--pagination-action-color);
+      font-size: 0.8rem;
+      margin: 5px 8px;
+      padding: 1px 5px;
+
+      &:--disabled {
+        background-color: var(--pagination-disabled-background);
+        color: var(--pagination-disabled-color);
+        cursor: default;
+      }
+    }
+  }
+}
