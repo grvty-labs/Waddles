@@ -1,6 +1,6 @@
 :root {
-  --main-button-padding: .9375rem 1.875rem;
-  --secondary-button-padding: .4375rem .625rem;
+  --main-button-padding: 0.9375rem 1.875rem;
+  --secondary-button-padding: 0.4375rem 0.625rem;
 }
 
 :--button {
@@ -11,15 +11,15 @@
   cursor: pointer;
 
   &.main {
-    color: var(--main-button-color);
-    background-color: var(--main-button-background);
+    color: var(--button-main-font-color);
+    background-color: var(--button-main-background);
     padding: var(--main-button-padding);
     text-transform: uppercase;
   }
 
   &.discrete {
-    color: var(--discrete-button-color);
-    background-color: var(--discrete-button-background);
+    color: var(--button-discrete-font-color);
+    background-color: var(--button-discrete-background);
     padding: var(--main-button-padding);
   }
 
@@ -30,17 +30,36 @@
   }
 
   &.secondary {
-    color: var(--secondary-button-color);
-    background-color: var(--secondary-button-background);
+    color: var(--button-secondary-font-color);
+    background-color: var(--button-secondary-background);
     padding: var(--secondary-button-padding);
   }
 
   &.link {
-    color: var(--main-link-color);
+    color: var(--button-link-font-color);
+    background-color: var(--button-link-background);
+
+    &:--disabled {
+      opacity: 0.6;
+    }
   }
 
-  &:--disabled {
-    color: var(--disabled-button-color);
-    background-color: var(--disabled-button-background);
+  &.main,
+  &.discrete,
+  &.secondary {
+    &:--disabled {
+      color: var(--button-disabled-font-color);
+      background-color: var(--button-disabled-background);
+    }
+  }
+
+  &.iconned {
+    display: flex;
+    justify-content: space-around;
+
+    > img {
+      height: 1rem;
+      width: auto;
+    }
   }
 }

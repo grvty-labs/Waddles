@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   background-color: var(--main-pane-background);
   color: var(--body-font-color);
   font-family: var(--main-font);
@@ -6,17 +7,16 @@ body, html {
   line-height: var(--global-lineheight);
   margin: 0;
 
-  & :any-link{
+  & :any-link {
     color: var(--main-link-color);
     text-decoration: none;
 
-    &.secondary{
+    &.secondary {
       color: var(--secondary-link-color);
     }
   }
 }
 
-div,
-form {
+* {
   box-sizing: border-box;
 }
