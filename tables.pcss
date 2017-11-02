@@ -4,10 +4,10 @@ table {
   table-layout: fixed;
 
   thead {
-    font-size: var(--table-header-font-size);
+    font-size: var(--table-header-font-size, 0.875rem);
     text-transform: uppercase;
-    background-color: var(--table-header-background);
-    color: var(--table-header-font-color);
+    background-color: var(--table-header-background, transparent);
+    color: var(--table-header-font-color, #837d97);
 
     tr {
       th {
@@ -21,9 +21,9 @@ table {
   }
 
   tbody {
-    font-size: var(--table-body-font-size);
-    background-color: var(--table-body-background);
-    color: var(--table-body-font-color);
+    font-size: var(--table-body-font-size, 0.875rem);
+    background-color: var(--table-body-background, transparent);
+    color: var(--table-body-font-color, #837d97);
 
     * {
       font-size: inherit;
@@ -31,7 +31,7 @@ table {
 
     tr {
       height: calc(1.5rem * 2.5);
-      border-bottom: var(--table-row-border) solid 1px;
+      border-bottom: var(--table-row-border, #d7dee7) solid 1px;
       text-align: left;
 
       td {
@@ -39,7 +39,7 @@ table {
         padding-right: 15px;
 
         .pop {
-          background-color: #fafafa;
+          background-color: var(--snow, #fafafa);
           border-radius: 3px;
           box-shadow: 0 8px 16px 0 rgba(82, 97, 115, 0.18);
           display: flex;
@@ -133,12 +133,6 @@ table {
     margin-right: 1rem;
   }
 
-  /*
-    @include breakpoint(small down) {
-    padding: 1% 5%;
-    width: 100%;
-  } */
-
   ul {
     align-items: center;
     display: flex;
@@ -150,8 +144,8 @@ table {
     li {
       border-radius: 100px;
       align-items: center;
-      background-color: var(--pagination-li-background);
-      color: var(--pagination-li-color);
+      background-color: var(--pagination-li-background, #fff);
+      color: var(--pagination-li-color, #3776c1);
       cursor: pointer;
       font-size: 0.9rem;
       display: flex;
@@ -162,32 +156,23 @@ table {
       padding: 5px;
 
       &.active {
-        background-color: var(--pagination-active-background);
-        color: var(--pagination-active-color);
+        background-color: var(--pagination-active-background, #3776c1);
+        color: var(--pagination-active-color, #fff);
       }
-
-      /*
-      &:first-child,
-      &:last-child {
-        border: 0;
-        color: magenta;
-        margin: 0;
-      }
-      */
     }
 
     .previous,
     .next {
       border-radius: 3px;
-      background-color: var(--pagination-action-background);
-      color: var(--pagination-action-color);
+      background-color: var(--pagination-action-background, color(#3776c1 l(+10%)));
+      color: var(--pagination-action-color, #fff);
       font-size: 0.8rem;
       margin: 5px 8px;
       padding: 1px 5px;
 
       &:--disabled {
-        background-color: var(--pagination-disabled-background);
-        color: var(--pagination-disabled-color);
+        background-color: var(--pagination-disabled-background, #929292);
+        color: var(--pagination-disabled-color, color(#fff shade(15%)));
         cursor: default;
       }
     }

@@ -1,26 +1,21 @@
-:root {
-  --main-button-padding: 0.9375rem 1.875rem;
-  --secondary-button-padding: 0.4375rem 0.625rem;
-}
-
 :--button {
   border: none;
-  border-radius: var(--global-border-radius);
-  font-family: var(--button-font);
+  border-radius: var(--global-border-radius, 4px);
+  font-family: var(--button-font, 'sans-serif');
   outline: none;
   cursor: pointer;
 
   &.main {
-    color: var(--button-main-font-color);
-    background-color: var(--button-main-background);
-    padding: var(--main-button-padding);
+    color: var(--button-main-font-color, #fff);
+    background-color: var(--button-main-background, #4000ff);
+    padding: var(--button-main-padding, 0.9375rem 1.875rem);
     text-transform: uppercase;
   }
 
   &.discrete {
-    color: var(--button-discrete-font-color);
-    background-color: var(--button-discrete-background);
-    padding: var(--main-button-padding);
+    color: var(--button-discrete-font-color, #fff);
+    background-color: var(--button-discrete-background, #4d5a70);
+    padding: var(--button-main-padding, 0.9375rem 1.875rem);
   }
 
   &.w-icon {
@@ -30,14 +25,14 @@
   }
 
   &.secondary {
-    color: var(--button-secondary-font-color);
-    background-color: var(--button-secondary-background);
-    padding: var(--secondary-button-padding);
+    color: var(--button-secondary-font-color, #fff);
+    background-color: var(--button-secondary-background, #00d3a7);
+    padding: var(--button-secondary-padding, 0.4375rem 0.625rem);
   }
 
   &.link {
-    color: var(--button-link-font-color);
-    background-color: var(--button-link-background);
+    background-color: var(--button-link-background, transparent);
+    color: var(--button-link-font-color, #0c0033);
 
     &:--disabled {
       opacity: 0.6;
@@ -48,8 +43,8 @@
   &.discrete,
   &.secondary {
     &:--disabled {
-      color: var(--button-disabled-font-color);
-      background-color: var(--button-disabled-background);
+      background-color: var(--button-disabled-background, color(#434243 alpha(-20%)));
+      color: var(--button-disabled-font-color, color(#6a7788 alpha(-20%)));
     }
   }
 

@@ -1,7 +1,7 @@
 :--headers {
   margin: 0;
   margin-bottom: 1.5rem;
-  color: var(--headers-font-color);
+  color: var(--headers-font-color, #0c0033);
 }
 
 p {
@@ -12,7 +12,7 @@ p {
 
 label {
   font-size: 0.812rem;
-  color: var(--label-color);
+  color: var(--label-color, #434243);
 }
 
 :--text-container {
@@ -28,31 +28,31 @@ label {
 }
 
 h1 {
-  font-size: 2.073rem;
-  line-height: 1.2em;
+  font-size: var(--headers-font-size-base, 2.073rem);
+  line-height: var(--headers-line-height-base, 1.2em);
 }
 
 h2 {
-  font-size: 1.728rem;
-  line-height: 1.24em;
+  font-size: calc(var(--headers-font-size-base, 2.073rem) * 0.8335);
+  line-height: calc(var(--headers-line-height-base, 1.2em) * 1.033);
 }
 
 h3 {
-  font-size: 1.35rem;
-  line-height: 1.267em;
+  font-size: calc(var(--headers-font-size-base, 2.073rem) * 0.6512);
+  line-height: calc(var(--headers-line-height-base, 1.2em) * 1.0558);
 }
 
 h4 {
-  font-size: 1.2rem;
-  line-height: 1em;
+  font-size: calc(var(--headers-font-size-base, 2.073rem) * 0.5788);
+  line-height: calc(var(--headers-line-height-base, 1.2em) * 0.8333);
 }
 
 h5 {
-  font-size: 1.125rem;
-  line-height: 1.172em;
+  font-size: calc(var(--headers-font-size-base, 2.073rem) * 0.5426);
+  line-height: calc(var(--headers-line-height-base, 1.2em) * 0.9766);
 }
 
 h6 {
-  font-size: 0.888rem;
-  line-height: 1em;
+  font-size: calc(var(--headers-font-size-base, 2.073rem) * 0.4283);
+  line-height: calc(var(--headers-line-height-base, 1.2em) * 0.8333);
 }

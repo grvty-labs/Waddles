@@ -1,5 +1,5 @@
 .lightbox {
-  background-color: color(var(--mine-shaft) alpha(-50%));
+  background-color: color(var(--mine-shaft, #2a2a2a) alpha(-50%));
   position: absolute;
   left: 0;
   top: 0;
@@ -9,7 +9,7 @@
   z-index: 10;
 
   .modal {
-    background-color: var(--white);
+    background-color: var(--white, #fff);
     border-radius: 3px;
     margin-bottom: 4rem;
     margin-top: 4rem;

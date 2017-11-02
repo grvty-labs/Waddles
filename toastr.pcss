@@ -4,16 +4,16 @@
 
 .toast-message {
   word-wrap: break-word;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   a,
   label {
-    color: var(--white);
+    color: var(--white, #fff);
   }
 
   a {
     &:hover {
-      color: var(--gray);
+      color: var(--gray, #929292);
       text-decoration: none;
     }
   }
@@ -21,27 +21,26 @@
 
 .toast-close-button {
   background: transparent;
-  color: var(--white);
-  filter: alpha(opacity = calc(var(--toastr-opacity) - 10));
+  color: var(--white, #fff);
+  filter: alpha(opacity = calc(var(--toastr-opacity, 85) - 10));
   float: right;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
-  opacity: calc(var(--toastr-opacity) / 100);
+  opacity: calc(var(--toastr-opacity, 85) / 100);
   position: relative;
-  right: -.3em;
-  text-shadow: 0 1px 0 var(--white));
-  top: -.3em;
+  right: -0.3em;
+  text-shadow: 0 1px 0 var(--white, #fff));
+  top: -0.3em;
 
   &:hover,
   &:focus {
-    color: var(--mine-shaft);
+    color: var(--mine-shaft, #2a2a2a);
     cursor: pointer;
-    filter: alpha(opacity = calc(var(--toastr-opacity) / 2));
-    opacity: calc(var(--toastr-opacity) / 200);
+    filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
+    opacity: calc(var(--toastr-opacity, 85) / 200);
     text-decoration: none;
   }
 }
-
 
 // Additional properties for button version
 // iOS requires the button element instead of an anchor tag.
@@ -58,7 +57,7 @@ button {
 
 .toast-top-center {
   right: 0;
-  top: var(--toastr-top);
+  top: var(--toastr-top, 2rem);
   width: 100%;
 }
 
@@ -72,7 +71,7 @@ button {
   margin: auto;
   left: 0;
   right: 0;
-  top: var(--toastr-top);
+  top: var(--toastr-top, 2rem);
   width: 100%;
 }
 
@@ -105,8 +104,7 @@ button {
 #toast-container {
   position: fixed;
   z-index: 999999;
-  width: var(--toastr-width);
-  // overrides
+  width: var(--toastr-width, 50vw);
 
   * {
     box-sizing: border-box;
@@ -114,13 +112,13 @@ button {
 
   > div {
     border-radius: 3px;
-    box-shadow: 0 0 12px var(--toastr-shadow);
-    filter: alpha(opacity = var(--toastr-opacity));
+    box-shadow: 0 0 12px var(--toastr-shadow, color(#2a2a2a alpha(-80%)));
+    filter: alpha(opacity = var(--toastr-opacity, 85));
     background-position: 15px center;
     background-repeat: no-repeat;
-    color: var(--white);
+    color: var(--white, #fff);
     margin: 0 0 6px;
-    opacity: calc(var(--toastr-opacity) / 100);
+    opacity: calc(var(--toastr-opacity, 85) / 100);
     overflow: hidden;
     padding: 15px 15px 15px 50px;
     position: relative;
@@ -128,7 +126,7 @@ button {
   }
 
   > :hover {
-    box-shadow: 0 0 12px var(--mine-shaft);
+    box-shadow: 0 0 12px var(--mine-shaft, #2a2a2a);
     filter: alpha(opacity = 100);
     cursor: pointer;
     opacity: 1;
@@ -168,32 +166,32 @@ button {
 }
 
 .toast {
-  background-color: var(--toastr-default-color);
+  background-color: var(--toastr-default-color, #6a7788);
 }
 
 .toast-success {
-  background-color: var(--toastr-success-color);
+  background-color: var(--toastr-success-color, #05a246);
 }
 
 .toast-error {
-  background-color: var(--toastr-alert-color);
+  background-color: var(--toastr-alert-color, #cc4b37);
 }
 
 .toast-info {
-  background-color: var(--toastr-info-color);
+  background-color: var(--toastr-info-color, #3776c1);
 }
 
 .toast-warning {
-  background-color: var(--toastr-warning-color);
+  background-color: var(--toastr-warning-color, #ffae00);
 }
 
 .toast-progress {
-  filter: alpha(opacity = calc(var(--toastr-opacity) / 2));
-  background-color: var(--mine-shaft);
+  filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
+  background-color: var(--mine-shaft, #2a2a2a);
   bottom: 0;
   height: 4px;
   left: 0;
-  opacity: calc(var(--toastr-opacity) / 200);
+  opacity: calc(var(--toastr-opacity, 85) / 200);
   position: absolute;
 }
 
