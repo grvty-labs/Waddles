@@ -1,18 +1,18 @@
 body,
 html {
-  background-color: var(--main-pane-background, #f6f7f7);
+  background-color: var(--body-background-color, #f6f7f7);
   color: var(--body-font-color, #c3bfcc);
   font-family: var(--main-font, sans-serif);
   font-size: var(--global-font-size, 16px);
   line-height: var(--global-lineheight, 1.5rem);
   margin: 0;
 
-  & :any-link {
-    color: var(--main-link-color, #3776c1);
+  &:--any-link {
+    color: var(--links-main-font-color, #3776c1);
     text-decoration: none;
 
     &.secondary {
-      color: var(--secondary-link-color, #2a2a2a);
+      color: var(--links-secondary-font-color, #2a2a2a);
     }
   }
 }
