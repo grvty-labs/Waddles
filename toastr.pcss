@@ -103,20 +103,16 @@ button {
 
 #toast-container {
   position: fixed;
-  z-index: 999999;
   width: var(--toastr-width, 50vw);
-
-  * {
-    box-sizing: border-box;
-  }
+  z-index: 999999;
 
   > div {
-    border-radius: 3px;
-    box-shadow: 0 0 12px var(--toastr-shadow, color(#2a2a2a alpha(-80%)));
-    filter: alpha(opacity = var(--toastr-opacity, 85));
     background-position: 15px center;
     background-repeat: no-repeat;
+    border-radius: 3px;
+    box-shadow: 0 0 12px var(--toastr-shadow, color(#2a2a2a alpha(-80%)));
     color: var(--white, #fff);
+    filter: alpha(opacity = var(--toastr-opacity, 85));
     margin: 0 0 6px;
     opacity: calc(var(--toastr-opacity, 85) / 100);
     overflow: hidden;
@@ -127,8 +123,8 @@ button {
 
   > :hover {
     box-shadow: 0 0 12px var(--mine-shaft, #2a2a2a);
-    filter: alpha(opacity = 100);
     cursor: pointer;
+    filter: alpha(opacity = 100);
     opacity: 1;
   }
 
@@ -186,16 +182,16 @@ button {
 }
 
 .toast-progress {
-  filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
   background-color: var(--mine-shaft, #2a2a2a);
   bottom: 0;
+  filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
   height: 4px;
   left: 0;
   opacity: calc(var(--toastr-opacity, 85) / 200);
   position: absolute;
 }
 
-// Responsive Design*/
+/* Responsive Design */
 @media all and (max-width: 240px) {
   #toast-container {
     > div {
@@ -204,8 +200,8 @@ button {
     }
 
     .toast-close-button {
-      right: -.2em;
-      top: -.2em;
+      right: -0.2em;
+      top: -0.2em;
     }
   }
 }
@@ -218,8 +214,8 @@ button {
     }
 
     .toast-close-button {
-      right: -.2em;
-      top: -.2em;
+      right: -0.2em;
+      top: -0.2em;
     }
   }
 }

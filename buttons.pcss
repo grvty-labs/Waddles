@@ -1,20 +1,20 @@
 :--button {
   border: none;
   border-radius: var(--global-border-radius, 4px);
+  cursor: pointer;
   font-family: var(--button-font, 'sans-serif');
   outline: none;
-  cursor: pointer;
 
   &.main {
-    color: var(--button-main-font-color, #fff);
     background-color: var(--button-main-background, #4000ff);
+    color: var(--button-main-font-color, #fff);
     padding: var(--button-main-padding, 0.9375rem 1.875rem);
     text-transform: uppercase;
   }
 
   &.discrete {
-    color: var(--button-discrete-font-color, #fff);
     background-color: var(--button-discrete-background, #4d5a70);
+    color: var(--button-discrete-font-color, #fff);
     padding: var(--button-main-padding, 0.9375rem 1.875rem);
   }
 
@@ -25,8 +25,8 @@
   }
 
   &.secondary {
-    color: var(--button-secondary-font-color, #fff);
     background-color: var(--button-secondary-background, #00d3a7);
+    color: var(--button-secondary-font-color, #fff);
     padding: var(--button-secondary-padding, 0.4375rem 0.625rem);
   }
 
