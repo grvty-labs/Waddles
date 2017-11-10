@@ -1,83 +1,76 @@
-/*
-  <div class='input-atom'>
-    <label></label>
-    <input />
-    <small class='error'></small>
-  </div>
-*/
-.input-atom {
-  display: flex;
-  flex-direction: column;
-
-  small {
-    &.error {
-      color: var(--alert, #cc4b37);
-    }
-
-    &.warning {
-      color: var(--warning, #ffae00);
-    }
-  }
-}
-
 input,
 select,
 textarea {
   background-color: transparent;
   border: none;
-  border-bottom: 1px var(--input-border-color, #929292) solid;
+  border-color: var(--input-border-color, #929292);
+  border-radius: var(--input-border-radius, 0);
+  border-style: solid;
+  border-width: var(--input-border-sizes, 0 0 0 0);
+  color: var(--input-font-color, #0c0033);
   outline: none;
-  padding: 16px;
-  padding-bottom: calc(1.5rem * 0.5);
-  padding-top: calc(1.5rem * 0.5);
+  padding: var(--input-padding, 16px);
   resize: none;
-  transition: border 0.4s ease-in-out;
-  width: calc(100% - 32px);
+  transition:
+    border var(--input-transition-time, 0.4s) ease-in-out,
+    background var(--input-transition-time, 0.4s) ease-in-out;
+  width: 100%;
 
   &::placeholder {
-    font-weight: lighter;
-  }
-
-  &:hover {
-    border-bottom: 1px var(--input-border-color-hover, #6a7788) solid;
-  }
-
-  &:--enter-action {
-    border-bottom: 1px var(--input-border-color-focus, #3776c1) solid;
+    color: var(--input-font-color, #0c0033);
+    opacity: 0.25;
   }
 
   &:hover,
   &:--enter-action {
-    background-color: var(--input-focus, color(#e4e8ee alpha(-40%)));
+    background-color: var(--input-focus-background, color(#e4e8ee alpha(-40%)));
     transition:
       background-color 0.3s ease-in,
-      border 0.4s ease-in-out;
+      border var(--input-transition-time, 0.4s) ease-in-out;
+  }
+
+  &:hover {
+    border-color: var(--input-hover-border-color, #6a7788);
+  }
+
+  &:--enter-action {
+    border-color: var(--input-focus-border-color, #3776c1);
   }
 
   &:--disabled {
-    border-bottom: 1px var(--input-border-color, #929292) solid;
     background-color: var(--input-disabled-background, transparent);
+    border-color: var(--input-disabled-border-color, #929292);
+  }
+
+  & + input,
+  & + select,
+  & + textarea {
+    margin-left: calc(var(--input-padding, 16px) * 2);
   }
 }
 
 .checkbox {
   position: relative;
 
-  label:empty {
+  label {
+    border-color: var(--checkbox-border-color, #333);
     border-radius: 4px;
-    border: 2px solid var(--checkbox-border-color, #c3bfcc);
+    border-style: solid;
+    border-width: var(--checkbox-border-sizes, 2px);
+    color: transparent;
+    content: "";
     cursor: pointer;
-    height: 1.35rem;
+    height: var(--checkbox-size, 1.35rem);
     left: 0;
     position: absolute;
     top: 0;
-    width: 1.35rem;
+    width: var(--checkbox-size, 1.35rem);
 
     &::after {
       background: transparent;
-      border: 3px solid var(--checkbox-checked-color, #4000ff);
-      border-right: none;
-      border-top: none;
+      border-color: var(--checkbox-checked-color, #4000ff);
+      border-style: solid;
+      border-width: 0 0 3px 3px;
       content: '';
       height: 4px;
       left: 3px;
@@ -96,8 +89,110 @@ textarea {
   input[type='checkbox'] {
     visibility: hidden;
 
-    &:checked + label:empty::after {
+    &:checked + label::after {
       opacity: 1;
+    }
+
+    &:disabled + label {
+      border-color: var(--checkbox-border-color, #c3bfcc);
+    }
+  }
+}
+
+.input-atom {
+  display: flex;
+  flex-direction: column;
+
+  .input-group {
+    align-items: center;
+    display: flex;
+    position: relative;
+
+    &.l-icon {
+      input {
+        padding-left: calc(var(--input-padding, 16px) + 1.5rem);
+      }
+
+      span {
+        &:first-of-type {
+          left: 0;
+          position: absolute;
+
+          &::before {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+
+    &.r-icon {
+      input {
+        padding-right: calc(var(--input-padding, 16px) + 1.4rem);
+      }
+
+      span {
+        &:last-of-type::before {
+          margin-left: -1.5rem;
+        }
+
+        &.required {
+          color: var(--torch-red, #ff0048);
+        }
+      }
+    }
+
+    input,
+    select,
+    textarea {
+      &:hover {
+        + span {
+          color: var(--input-hover-border-color, #6a7788);
+        }
+      }
+
+      &:--enter-action {
+        + span {
+          color: var(--input-focus-border-color, #3776c1);
+        }
+      }
+    }
+
+    span {
+      transition: color var(--input-transition-time, 0.4s) ease-in-out;
+      width: 1px;
+    }
+  }
+
+  small {
+    align-items: center;
+    display: flex;
+    font-size: small;
+    padding-left: 15px;
+    position: relative;
+
+    &::before {
+      left: 0;
+      position: absolute;
+    }
+
+    &.subtle {
+      color: var(--alert, #cc4b37);
+    }
+
+    &.info {
+      color: var(--alert, #cc4b37);
+    }
+
+    &.error {
+      color: var(--alert, #cc4b37);
+    }
+
+    &.warning {
+      color: var(--warning, #ffae00);
+    }
+
+    &.required::before {
+      color: var(--torch-red, #ff0048);
     }
   }
 }
