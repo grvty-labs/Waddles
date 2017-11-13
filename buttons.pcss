@@ -30,10 +30,34 @@
     padding: var(--button-secondary-padding, 0.4375rem 0.625rem);
   }
 
+  &.icon {
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    min-height: 1.3rem;
+    min-width: 1.3rem;
+    padding: 0;
+
+    > .symbolicon {
+      color: inherit;
+      font-size: inherit;
+      min-height: inherit;
+      min-width: inherit;
+    }
+
+    &:hover,
+    &:--enter-action {
+      color: var(--button-icon-hover-font-color, #5969e1);
+    }
+  }
+
   &.link {
     background-color: var(--button-link-background, transparent);
     color: var(--button-link-font-color, #0c0033);
+  }
 
+  &.icon,
+  &.link {
     &:--disabled {
       opacity: 0.6;
     }
