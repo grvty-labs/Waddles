@@ -1,37 +1,37 @@
 table {
-  border-spacing: 0;
   border-collapse: collapse;
+  border-spacing: 0;
   table-layout: fixed;
 
   thead {
-    font-size: var(--table-header-font-size, 0.875rem);
-    text-transform: uppercase;
     background-color: var(--table-header-background, transparent);
     color: var(--table-header-font-color, #837d97);
+    font-size: var(--table-header-font-size, 0.875rem);
+    text-transform: uppercase;
 
     tr {
       th {
         height: calc(1.5rem * 2.5);
         margin: 0;
-        text-align: left;
         padding-left: 15px;
         padding-right: 15px;
+        text-align: left;
       }
     }
   }
 
   tbody {
-    font-size: var(--table-body-font-size, 0.875rem);
     background-color: var(--table-body-background, transparent);
     color: var(--table-body-font-color, #837d97);
+    font-size: var(--table-body-font-size, 0.875rem);
 
     * {
       font-size: inherit;
     }
 
     tr {
-      height: calc(1.5rem * 2.5);
       border-bottom: var(--table-row-border, #d7dee7) solid 1px;
+      height: calc(1.5rem * 2.5);
       text-align: left;
 
       td {
@@ -45,13 +45,13 @@ table {
           display: flex;
           flex-direction: column;
           min-width: 168px;
-          right: 90%;
           opacity: 0;
           padding: 8px 0;
           position: absolute;
+          right: 90%;
           top: 10%;
-          visibility: hidden;
           transition: opacity 0.3s;
+          visibility: hidden;
 
           &:hover {
             opacity: 1;
@@ -71,8 +71,8 @@ table {
       }
 
       &:last-child {
-        height: calc(1.5rem * 3);
         border-bottom: 0;
+        height: calc(1.5rem * 3);
 
         td {
           padding-bottom: calc(1.5rem * 0.5);
@@ -108,8 +108,8 @@ table {
             > button {
               > img {
                 cursor: pointer;
-                margin: 2px;
                 height: 24px;
+                margin: 2px;
                 width: 24px;
               }
             }
@@ -123,8 +123,8 @@ table {
 .pagination {
   align-items: center;
   display: flex;
-  justify-content: flex-end;
   flex-direction: row;
+  justify-content: flex-end;
   margin: 1rem 0;
   width: 100%;
 
@@ -142,13 +142,13 @@ table {
     padding: 0;
 
     li {
-      border-radius: 100px;
       align-items: center;
       background-color: var(--pagination-li-background, #fff);
+      border-radius: 100px;
       color: var(--pagination-li-color, #3776c1);
       cursor: pointer;
-      font-size: 0.9rem;
       display: flex;
+      font-size: 0.9rem;
       justify-content: center;
       margin: 5px;
       min-height: 30px;
@@ -163,8 +163,8 @@ table {
 
     .previous,
     .next {
-      border-radius: 3px;
       background-color: var(--pagination-action-background, color(#3776c1 l(+10%)));
+      border-radius: 3px;
       color: var(--pagination-action-color, #fff);
       font-size: 0.8rem;
       margin: 5px 8px;

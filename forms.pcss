@@ -3,7 +3,7 @@ select,
 textarea {
   background-color: transparent;
   border: none;
-  border-color: var(--input-border-color, #929292);
+  border-color: var(--input-border-color, #c2beca);
   border-radius: var(--input-border-radius, 0);
   border-style: solid;
   border-width: var(--input-border-sizes, 0 0 0 0);
@@ -17,13 +17,12 @@ textarea {
   width: 100%;
 
   &::placeholder {
-    color: var(--input-font-color, #0c0033);
-    opacity: 0.25;
+    color: var(--input-placeholder-font-color, #c2beca);
   }
 
   &:hover,
   &:--enter-action {
-    background-color: var(--input-focus-background, color(#e4e8ee alpha(-40%)));
+    background-color: var(--input-action-background, #e7e5eb);
     transition:
       background-color 0.3s ease-in,
       border var(--input-transition-time, 0.4s) ease-in-out;
@@ -34,12 +33,12 @@ textarea {
   }
 
   &:--enter-action {
-    border-color: var(--input-focus-border-color, #3776c1);
+    border-color: var(--input-focus-border-color, #4000ff);
   }
 
   &:--disabled {
-    background-color: var(--input-disabled-background, transparent);
-    border-color: var(--input-disabled-border-color, #929292);
+    background-color: var(--input-disabled-background, #e7e5eb);
+    border-color: var(--input-disabled-border-color, #e7e5eb);
   }
 
   & + input,
@@ -103,6 +102,17 @@ textarea {
   display: flex;
   flex-direction: column;
 
+  label {
+    display: none;
+
+    &:not(:empty) {
+      display: initial;
+      font-size: 0.875rem;
+      line-height: 1.43;
+      margin-bottom: 8px;
+    }
+  }
+
   .input-group {
     align-items: center;
     display: flex;
@@ -135,8 +145,32 @@ textarea {
           margin-left: -1.5rem;
         }
 
+        &.subtle,
+        &.info,
+        &.error,
+        &.success,
         &.required {
-          color: var(--torch-red, #ff0048);
+          cursor: help;
+        }
+
+        &.subtle {
+          color: var(--input-small-font-color-subtle, #c2beca);
+        }
+
+        &.info {
+          color: var(--input-small-font-color-info, #4000ff);
+        }
+
+        &.error {
+          color: var(--input-small-font-color-error, #ff0048);
+        }
+
+        &.success {
+          color: var(--input-small-font-color-success, #00d3a7);
+        }
+
+        &.required {
+          color: var(--input-required-symbol-color, #ff0048);
         }
       }
     }
@@ -145,14 +179,20 @@ textarea {
     select,
     textarea {
       &:hover {
-        + span {
+        ~ span {
           color: var(--input-hover-border-color, #6a7788);
         }
       }
 
       &:--enter-action {
-        + span {
-          color: var(--input-focus-border-color, #3776c1);
+        ~ span {
+          color: var(--input-focus-border-color, #4000ff);
+        }
+      }
+
+      &:disabled {
+        ~ span {
+          color: var(--input-border-color, #c2beca);
         }
       }
     }
@@ -161,38 +201,74 @@ textarea {
       transition: color var(--input-transition-time, 0.4s) ease-in-out;
       width: 1px;
     }
+
+    &.error {
+      input,
+      select,
+      textarea {
+        border-color: var(--input-error-border-color, #ff0048);
+      }
+    }
   }
 
   small {
-    align-items: center;
-    display: flex;
-    font-size: small;
-    padding-left: 15px;
+    color: var(--input-small-font-color-base, #c2beca);
+    font-size: 0.75rem;
+    padding-left: 1.5rem;
     position: relative;
 
     &::before {
+      font-size: 0.9rem;
       left: 0;
       position: absolute;
     }
 
     &.subtle {
-      color: var(--alert, #cc4b37);
+      color: var(--input-small-font-color-subtle, #c2beca);
     }
 
     &.info {
-      color: var(--alert, #cc4b37);
+      color: var(--input-small-font-color-info, #4000ff);
     }
 
     &.error {
-      color: var(--alert, #cc4b37);
+      color: var(--input-small-font-color-error, #ff0048);
     }
 
-    &.warning {
-      color: var(--warning, #ffae00);
+    &.success {
+      color: var(--input-small-font-color-success, #00d3a7);
     }
 
     &.required::before {
-      color: var(--torch-red, #ff0048);
+      color: var(--input-required-symbol-color, #ff0048);
     }
+  }
+
+  &.blocked {
+    .input-group {
+      input,
+      select,
+      textarea {
+        background-color: transparent;
+        border-color: transparent;
+        padding: 0;
+      }
+
+      &.l-icon {
+        padding-left: calc(var(--input-padding, 16px) + 1.2rem);
+      }
+
+      &.r-icon {
+        padding-right: calc(var(--input-padding, 16px) + 1.1rem);
+      }
+    }
+  }
+}
+
+.form-zone {
+  > .input-atom {
+    margin-bottom: 1rem;
+    max-width: 40%;
+    width: auto;
   }
 }
