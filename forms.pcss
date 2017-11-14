@@ -1,6 +1,4 @@
-input,
-select,
-textarea {
+:--inputs {
   background-color: transparent;
   border: none;
   border-color: var(--input-border-color, #c2beca);
@@ -16,8 +14,10 @@ textarea {
     background var(--input-transition-time, 0.4s) ease-in-out;
   width: 100%;
 
-  &::placeholder {
+  &::placeholder,
+  .placeholder {
     color: var(--input-placeholder-font-color, #c2beca);
+    user-select: none;
   }
 
   &:hover,
@@ -41,9 +41,7 @@ textarea {
     border-color: var(--input-disabled-border-color, #e7e5eb);
   }
 
-  & + input,
-  & + select,
-  & + textarea {
+  & + :--inputs {
     margin-left: calc(var(--input-padding, 16px) * 2);
   }
 }
@@ -92,9 +90,42 @@ textarea {
       opacity: 1;
     }
 
-    &:disabled + label {
+    &:--disabled + label {
       border-color: var(--checkbox-border-color, #c3bfcc);
     }
+  }
+}
+
+.select {
+  cursor: pointer;
+  position: relative;
+
+  .value {
+    &.single {
+      > span {
+        color: var(--input-font-color, #0c0033);
+      }
+    }
+
+    &.multiple {
+      > span {
+        background-color: var(--tolopea);
+        color: var(--whisper);
+      }
+    }
+  }
+
+  .options {
+    position: absolute;
+    visibility: hidden;
+
+    &.open {
+      visibility: visible;
+    }
+  }
+
+  &:--disabled {
+    cursor: default;
   }
 }
 
@@ -119,7 +150,7 @@ textarea {
     position: relative;
 
     &.l-icon {
-      input {
+      :--inputs {
         padding-left: calc(var(--input-padding, 16px) + 1.5rem);
       }
 
@@ -136,7 +167,7 @@ textarea {
     }
 
     &.r-icon {
-      input {
+      :--inputs {
         padding-right: calc(var(--input-padding, 16px) + 1.4rem);
       }
 
@@ -151,6 +182,11 @@ textarea {
         &.success,
         &.required {
           cursor: help;
+        }
+
+        &.angle {
+          color: var(--select-angle-font-color, #4000ff);
+          font-size: 0.8rem;
         }
 
         &.subtle {
@@ -175,25 +211,23 @@ textarea {
       }
     }
 
-    input,
-    select,
-    textarea {
-      &:hover {
-        ~ span {
-          color: var(--input-hover-border-color, #6a7788);
-        }
-      }
-
+    :--inputs {
       &:--enter-action {
         ~ span {
           color: var(--input-focus-border-color, #4000ff);
         }
       }
 
-      &:disabled {
+      &:--disabled {
         ~ span {
           color: var(--input-border-color, #c2beca);
         }
+      }
+    }
+
+    &:hover {
+      > span {
+        color: var(--input-hover-border-color, #6a7788);
       }
     }
 
@@ -203,9 +237,7 @@ textarea {
     }
 
     &.error {
-      input,
-      select,
-      textarea {
+      :--inputs {
         border-color: var(--input-error-border-color, #ff0048);
       }
     }
@@ -246,9 +278,7 @@ textarea {
 
   &.blocked {
     .input-group {
-      input,
-      select,
-      textarea {
+      :--inputs {
         background-color: transparent;
         border-color: transparent;
         padding: 0;
