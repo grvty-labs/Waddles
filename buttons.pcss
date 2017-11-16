@@ -40,7 +40,9 @@
 
     > .symbolicon {
       color: inherit;
+      display: flex;
       font-size: inherit;
+      justify-content: center;
       min-height: inherit;
       min-width: inherit;
     }
@@ -59,7 +61,12 @@
   &.icon,
   &.link {
     &:--disabled {
+      cursor: default;
       opacity: 0.6;
+    }
+
+    &.danger {
+      color: var(--torch-red);
     }
   }
 
@@ -69,10 +76,12 @@
     &:--disabled {
       background-color: var(--button-disabled-background, color(#434243 alpha(-20%)));
       color: var(--button-disabled-font-color, color(#6a7788 alpha(-20%)));
+      cursor: default;
     }
   }
 
   &.iconned {
+    align-items: center;
     display: flex;
     justify-content: space-around;
 

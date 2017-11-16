@@ -35,39 +35,11 @@ table {
       text-align: left;
 
       td {
+        hyphens: auto;
         padding-left: 15px;
         padding-right: 15px;
-
-        .pop {
-          background-color: var(--snow, #fafafa);
-          border-radius: 3px;
-          box-shadow: 0 8px 16px 0 rgba(82, 97, 115, 0.18);
-          display: flex;
-          flex-direction: column;
-          min-width: 168px;
-          opacity: 0;
-          padding: 8px 0;
-          position: absolute;
-          right: 90%;
-          top: 10%;
-          transition: opacity 0.3s;
-          visibility: hidden;
-
-          &:hover {
-            opacity: 1;
-            visibility: visible;
-          }
-
-          > button {
-            margin: 0;
-            width: 100%;
-          }
-        }
-
-        button:--enter-action + .pop {
-          opacity: 1;
-          visibility: visible;
-        }
+        word-break: break-word;
+        word-wrap: break-word;
       }
 
       &:last-child {
@@ -95,7 +67,7 @@ table {
     }
   }
 
-  &.actionpop {
+  &.contextual-actions {
     thead,
     tbody {
       tr {
@@ -104,15 +76,6 @@ table {
           &:last-of-type {
             position: relative;
             width: calc(1.5rem + 4px + 12px + 30px);
-
-            > button {
-              > img {
-                cursor: pointer;
-                height: 24px;
-                margin: 2px;
-                width: 24px;
-              }
-            }
           }
         }
       }
