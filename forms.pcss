@@ -23,7 +23,7 @@
   &:--enter-action {
     background-color: var(--input-action-background, #e7e5eb);
     transition:
-      background-color 0.3s ease-in,
+      background-color var(--input-transition-time, 0.4s) ease-in,
       border var(--input-transition-time, 0.4s) ease-in-out;
   }
 
@@ -40,6 +40,12 @@
     border-color: var(--input-disabled-border-color, #e7e5eb);
   }
 
+  &.blocked {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0;
+  }
+
   & + :--inputs {
     margin-left: calc(var(--input-padding, 16px) * 2);
   }
@@ -48,13 +54,16 @@
 .checkbox {
   position: relative;
 
-  label {
+  > label {
     color: var(--input-font-color, #0c0033);
     font-size: inherit;
-    margin-left: 0.5rem;
+
+    &:not(:empty) {
+      margin-left: 0.5rem;
+    }
   }
 
-  input[type='checkbox'] {
+  > input[type='checkbox'] {
     visibility: hidden;
 
     + label {
@@ -102,80 +111,8 @@
   }
 }
 
-.select {
-  cursor: pointer;
-  position: relative;
-
-  .value {
-    &.single {
-      > span {
-        color: var(--input-font-color, #0c0033);
-      }
-    }
-
-    &.multiple {
-      > span {
-        background-color: var(--han-purple);
-        border-radius: 100px;
-        color: var(--whisper);
-        font-size: 0.75rem;
-        margin-right: 0.25rem;
-        padding: 0.25rem 0.5rem;
-
-        &::after {
-          content: "\e95b";
-          font-family: 'SymboliconAir' !important;
-          font-size: 0.5rem;
-          font-smoothing: antialiased;
-          font-style: normal;
-          font-variant: normal;
-          font-weight: normal;
-          line-height: 1;
-          margin-left: 0.5rem;
-          speak: none;
-          text-transform: none;
-        }
-      }
-    }
-  }
-
-  .options {
-    background-color: var(--select-menu-background-color, #fff);
-    border-radius: 3px;
-    box-shadow: 0 8px 16px 0 rgba(12, 0, 51, 0.1);
-    height: 0;
-    left: -1px;
-    margin: 0 1rem 1rem 0;
-    overflow: hidden;
-    position: absolute;
-    top: calc(100% + 1px);
-    visibility: hidden;
-    width: calc(100% + 2px);
-
-    &.open {
-      height: auto;
-      visibility: visible;
-      z-index: 1;
-    }
-
-    > span {
-      display: block;
-      font-size: inherit;
-      padding: 0.5rem 1rem;
-      width: 100%;
-    }
-  }
-
-  &:--disabled {
-    cursor: default;
-  }
-
-  ~ span {
-    cursor: pointer;
-  }
-}
-
 .input-atom {
+  align-items: baseline;
   display: flex;
   flex-direction: column;
 
@@ -184,55 +121,65 @@
 
     &:not(:empty) {
       display: initial;
-      font-size: 0.875rem;
+      font-size: 0.875em;
       line-height: 1.43;
       margin-bottom: 8px;
     }
   }
 
-  .input-group {
+  .input {
     align-items: center;
     display: flex;
     position: relative;
 
-    &.l-icon {
-      :--inputs {
-        padding-left: calc(var(--input-padding, 16px) + var(--input-inline-symbols-size, 1.5rem));
+    > .icon {
+      align-items: center;
+      display: flex;
+      height: var(--input-inline-symbols-size, 1.5em);
+      justify-content: center;
+      pointer-events: none;
+      position: absolute;
+      transition: color var(--input-transition-time, 0.4s) ease-in-out;
+      width: var(--input-inline-symbols-size, 1.5em);
+
+      &:first-of-type {
+        left: 0.5em;
       }
 
-      > span {
-        &:first-of-type {
-          left: 0;
-          position: absolute;
-
-          &::before {
-            margin-left: 0.5rem;
-          }
-        }
+      &:last-of-type {
+        right: 0.5em;
       }
     }
 
-    &.r-icon {
-      :--inputs {
-        padding-right: calc(var(--input-padding, 16px) + var(--input-inline-symbols-size, 1.5rem));
+    &.prefix {
+      :--inputs,
+      > .file {
+        padding-left: calc(var(--input-inline-symbols-size, 1.5em) + 1em);
+      }
+    }
+
+    &.suffix {
+      :--inputs,
+      > .file {
+        padding-right: calc(var(--input-inline-symbols-size, 1.5em) + 1em);
       }
 
-      > span {
-        &:last-of-type::before {
-          margin-left: calc(0 - var(--input-padding, 16px) - var(--input-inline-symbols-size, 1.5rem));
-        }
-
+      > .icon {
         &.subtle,
         &.info,
         &.error,
         &.success,
         &.required {
           cursor: help;
+          pointer-events: auto;
         }
 
         &.angle {
           color: var(--select-angle-font-color, #4000ff);
-          font-size: 0.8rem;
+
+          &::before {
+            font-size: 0.8rem;
+          }
         }
 
         &.subtle {
@@ -260,42 +207,262 @@
     :--inputs {
       &[value=""],
       &:empty {
-        ~ span {
+        ~ .icon {
           color: var(--input-placeholder-font-color, #c2beca);
         }
       }
 
-      &:hover ~ span,
-      ~ span:hover {
+      &:hover ~ .icon,
+      ~ .icon:hover {
         color: var(--input-hover-border-color, #6a7788);
       }
 
       &:--disabled {
-        ~ span {
+        ~ .icon {
           color: var(--input-border-color, #c2beca);
         }
       }
 
       &:not([value=""]) {
-        ~ span {
+        ~ .icon {
           color: inherit;
         }
       }
 
       &:--enter-action {
-        ~ span {
+        ~ .icon {
           color: var(--input-focus-border-color, #4000ff);
         }
       }
     }
 
-    > span {
-      height: var(--input-inline-symbols-size, 1.5rem);
-      transition: color var(--input-transition-time, 0.4s) ease-in-out;
-      width: 1px;
+    > .select {
+      cursor: pointer;
+      font-size: inherit;
+      position: relative;
 
-      &::before {
-        width: var(--input-inline-symbols-size, 1.5rem);
+      > .value {
+        &.single {
+          > span {
+            color: var(--input-font-color, #0c0033);
+          }
+        }
+
+        &.multiple {
+          display: flex;
+          flex-wrap: wrap;
+
+          > span {
+            align-items: center;
+            background-color: var(--select-values-background, #4000ff);
+            border-radius: 5em;
+            color: var(--select-values-font-color, #e5e5e5);
+            display: inherit;
+            font-size: 0.75em;
+            margin-right: 0.25rem;
+            padding: 0.25em 0.5em;
+
+            &::after {
+              align-items: center;
+              content: "\e95b";
+              display: inherit;
+              font-family: 'SymboliconAir' !important;
+              font-size: 0.6em;
+              font-smoothing: antialiased;
+              font-style: normal;
+              font-variant: normal;
+              font-weight: normal;
+              height: 2.222em;
+              justify-content: center;
+              line-height: 1;
+              margin-left: 1.111em;
+              speak: none;
+              text-transform: none;
+              transition: width var(--select-transition-time, 0.3s) ease-in-out;
+              width: 2.222em;
+            }
+          }
+        }
+      }
+
+      > .options {
+        background-color: var(--select-menu-background-color, #fff);
+        border-radius: 3px;
+        box-shadow: var(--select-options-box-shadow, none);
+        left: -1px;
+        margin: 0 1em 1em 0;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        top: calc(100% + 1px);
+        transition:
+          opacity var(--select-transition-time) ease-in-out,
+          visibility 0s var(--select-transition-time) ease-in-out;
+        visibility: hidden;
+        width: calc(100% + 2px);
+        z-index: 1;
+
+        &.open {
+          opacity: 1;
+          transition:
+            opacity var(--select-transition-time) ease-in-out;
+          visibility: visible;
+        }
+
+        > span {
+          display: block;
+          font-size: inherit;
+          padding: 0.5em 1em;
+          width: 100%;
+        }
+      }
+
+      &:--disabled,
+      &.blocked {
+        cursor: default;
+        padding-right: var(--input-padding, 16px);
+
+        > .value {
+          &.multiple {
+            > span {
+              &::after {
+                margin-left: 0;
+                visibility: hidden;
+                width: 0;
+              }
+            }
+          }
+        }
+
+        ~ .angle {
+          visibility: hidden;
+        }
+      }
+    }
+
+    > .datetime {
+      position: relative;
+
+      > input {
+        cursor: pointer;
+      }
+
+      > .rdtPicker {
+        background-color: var(--datetime-background, #fafafa);
+        border-radius: 3px;
+        box-shadow: var(--datetime-box-shadow, none);
+        min-width: 100%;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        transition:
+          opacity var(--datetime-transition-time, 0.2s) ease-in-out,
+          visibility 0s var(--datetime-transition-time, 0.2s) ease-in-out;
+        visibility: hidden;
+        z-index: 1;
+
+        table {
+          table-layout: auto;
+          width: 100%;
+
+          thead {
+            background: var(--datetime-header-background, #5969e1);
+            color: var(--datetime-header-font-color, #fff);
+
+            th {
+              cursor: pointer;
+              height: auto;
+              padding: 0.5rem 0.6784rem;
+              text-align: center;
+            }
+
+            .rdtSwitch {
+              font-weight: bold;
+            }
+
+            .rdtNext,
+            .rdtPrev {
+              font-size: 1.5rem;
+            }
+          }
+
+          tbody {
+            tr {
+              border: 0;
+              height: 100%;
+
+              td {
+                cursor: pointer;
+                padding: 0.5rem;
+                text-align: center;
+              }
+
+              .rdtNew,
+              .rdtOld {
+                opacity: 0.5;
+              }
+            }
+          }
+
+          tfoot {
+            background: var(--datetime-header-background, #5969e1);
+            color: var(--datetime-header-font-color, #fff);
+            text-align: center;
+
+            td {
+              cursor: pointer;
+              padding: 0.5em;
+            }
+          }
+        }
+
+        .rdtDays {
+          table {
+            tbody {
+              td {
+                transition:
+                  background var(--datetime-transition-time, 0.2s) ease-in-out,
+                  border-radius var(--datetime-transition-time, 0.2s) ease-in-out;
+              }
+
+              .rdtActive {
+                background: var(--datetime-selected-background, #5969e1);
+                border-radius: 50px;
+                color: var(--datetime-selected-font-color, #fff);
+              }
+            }
+          }
+        }
+
+        .rdtCounters {
+          align-items: center;
+          display: flex;
+          justify-content: space-around;
+          padding: 0.5em 1.5em;
+        }
+      }
+
+      &.rdtOpen {
+        > .rdtPicker {
+          opacity: 1;
+          transition: opacity var(--datetime-transition-time, 0.2s) ease-in-out;
+          visibility: visible;
+        }
+      }
+    }
+
+    > .file {
+      height: 4.5714em;
+
+      > label {
+        align-items: center;
+        display: flex;
+        height: inherit;
+      }
+
+      > input {
+        display: none;
       }
     }
 
@@ -308,14 +475,17 @@
 
   small {
     color: var(--input-small-font-color-base, #c2beca);
-    font-size: 0.75rem;
-    padding-left: 1.5rem;
+    font-size: 0.75em;
     position: relative;
 
     &::before {
-      font-size: 0.9rem;
+      font-size: 1.2em;
       left: 0;
       position: absolute;
+    }
+
+    &.symbolicon {
+      padding-left: 1.5em;
     }
 
     &.subtle {
@@ -339,21 +509,18 @@
     }
   }
 
-  &.blocked {
-    .input-group {
+  /*&.blocked {
+    .input {
       :--inputs {
-        background-color: transparent;
-        border-color: transparent;
-        padding: 0;
       }
 
-      &.l-icon {
-        padding-left: calc(var(--input-padding, 16px) + 1.2rem);
+      &.prefix {
+        padding-left: 1.8em;
       }
 
-      &.r-icon {
-        padding-right: calc(var(--input-padding, 16px) + 1.1rem);
+      &.suffix {
+        padding-right: 1.7em;
       }
     }
-  }
+  }*/
 }
