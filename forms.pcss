@@ -1,4 +1,6 @@
-:--inputs {
+:--inputs,
+.file,
+.tags {
   background-color: transparent;
   border: none;
   border-color: var(--input-border-color, #c2beca);
@@ -40,74 +42,16 @@
     border-color: var(--input-disabled-border-color, #e7e5eb);
   }
 
+  &.read-only,
   &.blocked {
     background-color: transparent;
     border-color: transparent;
+    font-size: 1.1428em;
     padding: 0;
   }
 
   & + :--inputs {
-    margin-left: calc(var(--input-padding, 16px) * 2);
-  }
-}
-
-.checkbox {
-  position: relative;
-
-  > label {
-    color: var(--input-font-color, #0c0033);
-    font-size: inherit;
-
-    &:not(:empty) {
-      margin-left: 0.5rem;
-    }
-  }
-
-  > input[type='checkbox'] {
-    visibility: hidden;
-
-    + label {
-      border-color: var(--checkbox-border-color, #333);
-      border-radius: 4px;
-      border-style: solid;
-      border-width: var(--checkbox-border-sizes, 2px);
-      color: transparent;
-      content: "";
-      cursor: pointer;
-      height: var(--checkbox-size, 1.35rem);
-      left: 0;
-      margin-left: 0;
-      position: absolute;
-      top: 0;
-      width: var(--checkbox-size, 1.35rem);
-
-      &::after {
-        background: transparent;
-        border-color: var(--checkbox-checked-color, #4000ff);
-        border-style: solid;
-        border-width: 0 0 3px 3px;
-        content: '';
-        height: 4px;
-        left: 3px;
-        opacity: 0;
-        position: absolute;
-        top: 4px;
-        transform: rotate(-45deg);
-        width: 9px;
-      }
-
-      &:--enter-action {
-        outline: initial auto 5px;
-      }
-    }
-
-    &:checked + label::after {
-      opacity: 1;
-    }
-
-    &:--disabled + label {
-      border-color: var(--checkbox-border-color, #c3bfcc);
-    }
+    margin-left: calc(var(--input-padding, 0.5em) * 2);
   }
 }
 
@@ -123,7 +67,7 @@
       display: initial;
       font-size: 0.875em;
       line-height: 1.43;
-      margin-bottom: 8px;
+      margin-bottom: 0.5em;
     }
   }
 
@@ -131,6 +75,7 @@
     align-items: center;
     display: flex;
     position: relative;
+    width: 100%;
 
     > .icon {
       align-items: center;
@@ -153,14 +98,15 @@
 
     &.prefix {
       :--inputs,
-      > .file {
+      > .tags {
         padding-left: calc(var(--input-inline-symbols-size, 1.5em) + 1em);
       }
     }
 
     &.suffix {
       :--inputs,
-      > .file {
+      > .file,
+      > .tags {
         padding-right: calc(var(--input-inline-symbols-size, 1.5em) + 1em);
       }
 
@@ -178,7 +124,7 @@
           color: var(--select-angle-font-color, #4000ff);
 
           &::before {
-            font-size: 0.8rem;
+            font-size: 0.8em;
           }
         }
 
@@ -204,7 +150,12 @@
       }
     }
 
-    :--inputs {
+    :--inputs,
+    .datetime,
+    .file,
+    .tags {
+      width: 100%;
+
       &[value=""],
       &:empty {
         ~ .icon {
@@ -236,236 +187,6 @@
       }
     }
 
-    > .select {
-      cursor: pointer;
-      font-size: inherit;
-      position: relative;
-
-      > .value {
-        &.single {
-          > span {
-            color: var(--input-font-color, #0c0033);
-          }
-        }
-
-        &.multiple {
-          display: flex;
-          flex-wrap: wrap;
-
-          > span {
-            align-items: center;
-            background-color: var(--select-values-background, #4000ff);
-            border-radius: 5em;
-            color: var(--select-values-font-color, #e5e5e5);
-            display: inherit;
-            font-size: 0.75em;
-            margin-right: 0.25rem;
-            padding: 0.25em 0.5em;
-
-            &::after {
-              align-items: center;
-              content: "\e95b";
-              display: inherit;
-              font-family: 'SymboliconAir' !important;
-              font-size: 0.6em;
-              font-smoothing: antialiased;
-              font-style: normal;
-              font-variant: normal;
-              font-weight: normal;
-              height: 2.222em;
-              justify-content: center;
-              line-height: 1;
-              margin-left: 1.111em;
-              speak: none;
-              text-transform: none;
-              transition: width var(--select-transition-time, 0.3s) ease-in-out;
-              width: 2.222em;
-            }
-          }
-        }
-      }
-
-      > .options {
-        background-color: var(--select-menu-background-color, #fff);
-        border-radius: 3px;
-        box-shadow: var(--select-options-box-shadow, none);
-        left: -1px;
-        margin: 0 1em 1em 0;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        top: calc(100% + 1px);
-        transition:
-          opacity var(--select-transition-time) ease-in-out,
-          visibility 0s var(--select-transition-time) ease-in-out;
-        visibility: hidden;
-        width: calc(100% + 2px);
-        z-index: 1;
-
-        &.open {
-          opacity: 1;
-          transition:
-            opacity var(--select-transition-time) ease-in-out;
-          visibility: visible;
-        }
-
-        > span {
-          display: block;
-          font-size: inherit;
-          padding: 0.5em 1em;
-          width: 100%;
-        }
-      }
-
-      &:--disabled,
-      &.blocked {
-        cursor: default;
-        padding-right: var(--input-padding, 16px);
-
-        > .value {
-          &.multiple {
-            > span {
-              &::after {
-                margin-left: 0;
-                visibility: hidden;
-                width: 0;
-              }
-            }
-          }
-        }
-
-        ~ .angle {
-          visibility: hidden;
-        }
-      }
-    }
-
-    > .datetime {
-      position: relative;
-
-      > input {
-        cursor: pointer;
-      }
-
-      > .rdtPicker {
-        background-color: var(--datetime-background, #fafafa);
-        border-radius: 3px;
-        box-shadow: var(--datetime-box-shadow, none);
-        min-width: 100%;
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        top: 100%;
-        transition:
-          opacity var(--datetime-transition-time, 0.2s) ease-in-out,
-          visibility 0s var(--datetime-transition-time, 0.2s) ease-in-out;
-        visibility: hidden;
-        z-index: 1;
-
-        table {
-          table-layout: auto;
-          width: 100%;
-
-          thead {
-            background: var(--datetime-header-background, #5969e1);
-            color: var(--datetime-header-font-color, #fff);
-
-            th {
-              cursor: pointer;
-              height: auto;
-              padding: 0.5rem 0.6784rem;
-              text-align: center;
-            }
-
-            .rdtSwitch {
-              font-weight: bold;
-            }
-
-            .rdtNext,
-            .rdtPrev {
-              font-size: 1.5rem;
-            }
-          }
-
-          tbody {
-            tr {
-              border: 0;
-              height: 100%;
-
-              td {
-                cursor: pointer;
-                padding: 0.5rem;
-                text-align: center;
-              }
-
-              .rdtNew,
-              .rdtOld {
-                opacity: 0.5;
-              }
-            }
-          }
-
-          tfoot {
-            background: var(--datetime-header-background, #5969e1);
-            color: var(--datetime-header-font-color, #fff);
-            text-align: center;
-
-            td {
-              cursor: pointer;
-              padding: 0.5em;
-            }
-          }
-        }
-
-        .rdtDays {
-          table {
-            tbody {
-              td {
-                transition:
-                  background var(--datetime-transition-time, 0.2s) ease-in-out,
-                  border-radius var(--datetime-transition-time, 0.2s) ease-in-out;
-              }
-
-              .rdtActive {
-                background: var(--datetime-selected-background, #5969e1);
-                border-radius: 50px;
-                color: var(--datetime-selected-font-color, #fff);
-              }
-            }
-          }
-        }
-
-        .rdtCounters {
-          align-items: center;
-          display: flex;
-          justify-content: space-around;
-          padding: 0.5em 1.5em;
-        }
-      }
-
-      &.rdtOpen {
-        > .rdtPicker {
-          opacity: 1;
-          transition: opacity var(--datetime-transition-time, 0.2s) ease-in-out;
-          visibility: visible;
-        }
-      }
-    }
-
-    > .file {
-      height: 4.5714em;
-
-      > label {
-        align-items: center;
-        display: flex;
-        height: inherit;
-      }
-
-      > input {
-        display: none;
-      }
-    }
-
     &.error {
       :--inputs {
         border-color: var(--input-error-border-color, #ff0048);
@@ -473,54 +194,53 @@
     }
   }
 
-  small {
-    color: var(--input-small-font-color-base, #c2beca);
-    font-size: 0.75em;
-    position: relative;
+  > .msgs {
+    width: 100%;
 
-    &::before {
-      font-size: 1.2em;
-      left: 0;
-      position: absolute;
-    }
+    small {
+      color: var(--input-small-font-color-base, #c2beca);
+      font-size: 0.75em;
+      position: relative;
 
-    &.symbolicon {
-      padding-left: 1.5em;
-    }
+      &::before {
+        font-size: 1.2em;
+        left: 0;
+        position: absolute;
+      }
 
-    &.subtle {
-      color: var(--input-small-font-color-subtle, #c2beca);
-    }
+      &.symbolicon {
+        padding-left: 1.5em;
+      }
 
-    &.info {
-      color: var(--input-small-font-color-info, #4000ff);
-    }
+      &.subtle {
+        color: var(--input-small-font-color-subtle, #c2beca);
+      }
 
-    &.error {
-      color: var(--input-small-font-color-error, #ff0048);
-    }
+      &.info {
+        color: var(--input-small-font-color-info, #4000ff);
+      }
 
-    &.success {
-      color: var(--input-small-font-color-success, #00d3a7);
-    }
+      &.error {
+        color: var(--input-small-font-color-error, #ff0048);
+      }
 
-    &.required::before {
-      color: var(--input-required-symbol-color, #ff0048);
+      &.success {
+        color: var(--input-small-font-color-success, #00d3a7);
+      }
+
+      &.required::before {
+        color: var(--input-required-symbol-color, #ff0048);
+      }
     }
   }
 
-  /*&.blocked {
-    .input {
-      :--inputs {
-      }
+  > .footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 
-      &.prefix {
-        padding-left: 1.8em;
-      }
-
-      &.suffix {
-        padding-right: 1.7em;
-      }
+    &:not(:empty) {
+      margin-top: 0.25em;
     }
-  }*/
+  }
 }
