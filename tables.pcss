@@ -6,15 +6,15 @@ table {
   thead {
     background-color: var(--table-header-background, transparent);
     color: var(--table-header-font-color, #837d97);
-    font-size: var(--table-header-font-size, 0.875rem);
+    font-size: var(--table-header-font-size, 0.875em);
     text-transform: uppercase;
 
     tr {
       th {
-        height: calc(1.5rem * 2.5);
+        height: 3.75em;
         margin: 0;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 1em;
+        padding-right: 1em;
         text-align: left;
       }
     }
@@ -23,7 +23,7 @@ table {
   tbody {
     background-color: var(--table-body-background, transparent);
     color: var(--table-body-font-color, #837d97);
-    font-size: var(--table-body-font-size, 0.875rem);
+    font-size: var(--table-body-font-size, 0.875em);
 
     * {
       font-size: inherit;
@@ -31,23 +31,23 @@ table {
 
     tr {
       border-bottom: var(--table-row-border, #d7dee7) solid 1px;
-      height: calc(1.5rem * 2.5);
+      height: 3.75em;
       text-align: left;
 
       td {
         hyphens: auto;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 1em;
+        padding-right: 1em;
         word-break: break-word;
         word-wrap: break-word;
       }
 
       &:last-child {
         border-bottom: 0;
-        height: calc(1.5rem * 3);
+        height: 4.5em;
 
         td {
-          padding-bottom: calc(1.5rem * 0.5);
+          padding-bottom: 0.75em;
         }
       }
     }
@@ -60,7 +60,7 @@ table {
         th,
         td {
           &:first-of-type {
-            width: calc(1.1rem + 6px + 30px);
+            width: 3.35em;
           }
         }
       }
@@ -75,7 +75,7 @@ table {
         td {
           &:last-of-type {
             position: relative;
-            width: calc(1.5rem + 4px + 12px + 30px);
+            width: 4.375em;
           }
         }
       }
