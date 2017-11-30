@@ -1,21 +1,72 @@
 :--button {
+  align-items: center;
   border: none;
   border-radius: var(--global-border-radius, 4px);
   cursor: pointer;
+  display: flex;
   font-family: var(--button-font, 'sans-serif');
   outline: none;
+
+  &.small {
+    font-size: var(--button-small-font-size);
+    padding: var(--button-small-padding);
+
+    &.iconned {
+      padding: var(--button-small-iconned-padding);
+
+      &.inverted {
+        padding: var(--button-small-iconned-inverted-padding);
+      }
+    }
+  }
+
+  &.regular {
+    font-size: var(--button-regular-font-size);
+    padding: var(--button-regular-padding);
+
+    &.iconned {
+      padding: var(--button-regular-iconned-padding);
+
+      &.inverted {
+        padding: var(--button-regular-iconned-inverted-padding);
+      }
+    }
+  }
+
+  &.big {
+    font-size: var(--button-big-font-size);
+    padding: var(--button-big-padding);
+
+    &.iconned {
+      padding: var(--button-big-iconned-padding);
+
+      &.inverted {
+        padding: var(--button-big-iconned-inverted-padding);
+      }
+    }
+  }
+
+  &.huge {
+    font-size: var(--button-huge-font-size);
+    padding: var(--button-huge-padding);
+
+    &.iconned {
+      padding: var(--button-huge-iconned-padding);
+
+      &.inverted {
+        padding: var(--button-huge-iconned-inverted-padding);
+      }
+    }
+  }
 
   &.main {
     background-color: var(--button-main-background, #4000ff);
     color: var(--button-main-font-color, #fff);
-    padding: var(--button-main-padding, 0.9375rem 1.875rem);
-    text-transform: uppercase;
   }
 
   &.discrete {
     background-color: var(--button-discrete-background, #4d5a70);
     color: var(--button-discrete-font-color, #fff);
-    padding: var(--button-main-padding, 0.9375rem 1.875rem);
   }
 
   &.w-icon {
@@ -27,13 +78,11 @@
   &.secondary {
     background-color: var(--button-secondary-background, #00d3a7);
     color: var(--button-secondary-font-color, #fff);
-    padding: var(--button-secondary-padding, 0.4375rem 0.625rem);
   }
 
   &.icon {
     background-color: transparent;
     color: inherit;
-    font-size: inherit;
     min-height: 1.3rem;
     min-width: 1.3rem;
     padding: 0;
@@ -41,7 +90,6 @@
     > .symbolicon {
       color: inherit;
       display: flex;
-      font-size: inherit;
       justify-content: center;
       min-height: inherit;
       min-width: inherit;
@@ -88,6 +136,19 @@
     > img {
       height: 1rem;
       width: auto;
+    }
+  }
+}
+
+.button-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+
+  :--button {
+    &:not(:last-of-type) {
+      margin-right: 1em;
     }
   }
 }
