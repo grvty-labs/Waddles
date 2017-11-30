@@ -11,10 +11,8 @@ table {
 
     tr {
       th {
-        height: 3.75em;
         margin: 0;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding: var(--table-row-padding, 0.25em 0.5em);
         text-align: left;
       }
     }
@@ -30,26 +28,24 @@ table {
     }
 
     tr {
-      border-bottom: var(--table-row-border, #d7dee7) solid 1px;
-      height: 3.75em;
+      border-bottom: var(--table-row-border-color, #d7dee7) solid var(--table-row-border-width, 1px);
       text-align: left;
 
       td {
         hyphens: auto;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding: var(--table-row-padding, 0.25em 0.5em);
         word-break: break-word;
         word-wrap: break-word;
       }
 
-      &:last-child {
+      /*&:last-child {
         border-bottom: 0;
         height: 4.5em;
 
         td {
           padding-bottom: 0.75em;
         }
-      }
+      }*/
     }
   }
 

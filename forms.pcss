@@ -6,7 +6,7 @@
   border-color: var(--input-border-color, #c2beca);
   border-radius: var(--input-border-radius, 0);
   border-style: solid;
-  border-width: var(--input-border-sizes, 0 0 0 0);
+  border-width: var(--input-border-sizes);
   color: var(--input-font-color, #0c0033);
   outline: none;
   padding: var(--input-padding, 0.5em);
@@ -147,7 +147,7 @@
         }
 
         &.required {
-          color: var(--input-required-symbol-color, #ff0048);
+          color: var(--input-required-symbol-color, #ff0048) !important;
         }
       }
     }
