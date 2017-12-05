@@ -3,41 +3,42 @@
 }
 
 .toast-message {
-  font-size: 0.9rem;
   word-wrap: break-word;
 
   a,
   label {
-    color: var(--white, #fff);
+    color: var(--white);
   }
 
   a {
     &:hover {
-      color: var(--gray, #929292);
+      color: var(--very-light-grey-2);
       text-decoration: none;
     }
   }
 }
 
 .toast-close-button {
+  appearance: none;
   background: transparent;
-  color: var(--white, #fff);
-  filter: alpha(opacity = calc(var(--toastr-opacity, 85) - 10));
+  border: 0;
+  color: var(--white);
+  filter: alpha(opacity = calc(var(--toastr-opacity) - 10));
   float: right;
   font-size: 1.25rem;
   font-weight: bold;
-  opacity: calc(var(--toastr-opacity, 85) / 100);
+  opacity: calc(var(--toastr-opacity) / 100);
   position: relative;
   right: -0.3em;
-  text-shadow: 0 1px 0 var(--white, #fff));
+  text-shadow: 0 1px 0 var(--white);
   top: -0.3em;
 
   &:hover,
   &:focus {
-    color: var(--mine-shaft, #2a2a2a);
+    color: var(--nero);
     cursor: pointer;
-    filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
-    opacity: calc(var(--toastr-opacity, 85) / 200);
+    filter: alpha(opacity = calc(var(--toastr-opacity) / 2));
+    opacity: calc(var(--toastr-opacity) / 200);
     text-decoration: none;
   }
 }
@@ -69,10 +70,10 @@ button {
 
 .toast-top-full-width {
   left: 0;
-  margin: auto;
+  margin: 0 auto;
   right: 0;
-  top: var(--toastr-top, 2rem);
-  width: 100%;
+  top: var(--toastr-top);
+  width: 52%;
 }
 
 .toast-bottom-full-width {
@@ -103,18 +104,18 @@ button {
 
 #toast-container {
   position: fixed;
-  width: var(--toastr-width, 50vw);
+  /*width: var(--toastr-width, 50vw);*/
   z-index: var(--toastr-zindex);
 
   > div {
     background-position: 15px center;
     background-repeat: no-repeat;
     border-radius: 3px;
-    box-shadow: 0 0 12px var(--toastr-shadow, color(#2a2a2a alpha(-80%)));
-    color: var(--white, #fff);
-    filter: alpha(opacity = var(--toastr-opacity, 85));
+    box-shadow: 0 0 12px var(--toastr-shadow);
+    color: var(--white);
+    filter: alpha(opacity = var(--toastr-opacity));
     margin: 0 0 6px;
-    opacity: calc(var(--toastr-opacity, 85) / 100);
+    opacity: calc(var(--toastr-opacity) / 100);
     overflow: hidden;
     padding: 15px 15px 15px 50px;
     position: relative;
@@ -155,39 +156,39 @@ button {
   &.toast-top-full-width,
   &.toast-bottom-full-width {
     > div {
-      margin: 3px auto;
+      margin: auto;
       width: 100%;
     }
   }
 }
 
 .toast {
-  background-color: var(--toastr-default-color, #6a7788);
+  background-color: var(--toastr-default-color);
 }
 
 .toast-success {
-  background-color: var(--toastr-success-color, #05a246);
+  background-color: var(--toastr-success-color);
 }
 
 .toast-error {
-  background-color: var(--toastr-alert-color, #cc4b37);
+  background-color: var(--toastr-alert-color);
 }
 
 .toast-info {
-  background-color: var(--toastr-info-color, #3776c1);
+  background-color: var(--toastr-info-color);
 }
 
 .toast-warning {
-  background-color: var(--toastr-warning-color, #ffae00);
+  background-color: var(--toastr-warning-color);
 }
 
 .toast-progress {
-  background-color: var(--mine-shaft, #2a2a2a);
+  background-color: var(--nero);
   bottom: 0;
-  filter: alpha(opacity = calc(var(--toastr-opacity, 85) / 2));
+  filter: alpha(opacity = calc(var(--toastr-opacity) / 2));
   height: 4px;
   left: 0;
-  opacity: calc(var(--toastr-opacity, 85) / 200);
+  opacity: calc(var(--toastr-opacity) / 200);
   position: absolute;
 }
 
