@@ -32,3 +32,24 @@
     visibility: hidden;
   }
 }
+
+@keyframes push-in {
+  0% {
+    right: -100vw;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes push-out {
+  0% {
+    overflow: hidden;
+    right: 0;
+  }
+
+  100% {
+    right: -100vw;
+  }
+}
