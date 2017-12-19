@@ -1,18 +1,16 @@
-.lightbox {
-  background-color: color(var(--mine-shaft) alpha(-50%));
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: auto;
+/*.lightbox {
+  background-color: color(var(--mine-shaft, #2a2a2a) alpha(-50%));
   height: 100%;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: var(--modals-zindex);
 
   .modal {
-    background-color: var(--white);
+    background-color: var(--white, #fff);
     border-radius: 3px;
-    lost-column: 9/15;
-    lost-offset: 3/15;
     margin-bottom: 4rem;
     margin-top: 4rem;
     padding: 3rem 4rem;
@@ -22,4 +20,4 @@
       justify-content: space-between;
     }
   }
-}
+}*/

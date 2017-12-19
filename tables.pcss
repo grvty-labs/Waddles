@@ -1,44 +1,74 @@
 table {
-  border-spacing: 0;
   border-collapse: collapse;
+  border-spacing: 0;
   table-layout: fixed;
 
   thead {
-    font-size: .6875rem;
+    background-color: var(--table-header-background, transparent);
+    color: var(--table-header-font-color, #837d97);
+    font-size: var(--table-header-font-size, 0.875em);
     text-transform: uppercase;
-    background-color: var(--table-header-background);
-    color: var(--table-header-color);
 
-    tr th {
-      height: calc(1.5rem*2.5);
-      margin: 0;
-      text-align: left;
-      padding-left: 15px;
-      padding-right: 15px;
+    tr {
+      th {
+        margin: 0;
+        padding: var(--table-row-padding, 0.25em 0.5em);
+        text-align: left;
+      }
     }
   }
 
   tbody {
-    font-size: .833125rem;
-    background-color: var(--table-background);
-    color: var(--table-color);
+    background-color: var(--table-body-background, transparent);
+    color: var(--table-body-font-color, #837d97);
+    font-size: var(--table-body-font-size, 0.875em);
+
+    * {
+      font-size: inherit;
+    }
 
     tr {
-      height: calc(1.5rem*2.5);
-      border-bottom: var(--table-border) solid 1px;
+      border-bottom: var(--table-row-border-color, #d7dee7) solid var(--table-row-border-width, 1px);
       text-align: left;
 
       td {
-        padding-left: 15px;
-        padding-right: 15px;
+        hyphens: auto;
+        padding: var(--table-row-padding, 0.25em 0.5em);
+        word-break: break-word;
+        word-wrap: break-word;
       }
 
-      &:last-child {
-        height: calc(1.5rem*3);
-        border-bottom: 0;
+      &:hover,
+      &:--enter-action {
+        background-color: var(--table-row-hover-background);
+      }
+    }
+  }
 
-        & td {
-          padding-bottom: calc(1.5rem*.5);
+  &.multiselect {
+    thead,
+    tbody {
+      tr {
+        th,
+        td {
+          &:first-of-type {
+            width: 3.35em;
+          }
+        }
+      }
+    }
+  }
+
+  &.contextual-actions {
+    thead,
+    tbody {
+      tr {
+        th,
+        td {
+          &:last-child {
+            position: relative;
+            width: 4.375em;
+          }
         }
       }
     }
@@ -48,8 +78,8 @@ table {
 .pagination {
   align-items: center;
   display: flex;
-  justify-content: flex-end;
   flex-direction: row;
+  justify-content: flex-end;
   margin: 1rem 0;
   width: 100%;
 
@@ -57,11 +87,6 @@ table {
     font-weight: bolder;
     margin-right: 1rem;
   }
-
-  /*@include breakpoint(small down) {
-    padding: 1% 5%;
-    width: 100%;
-  }*/
 
   ul {
     align-items: center;
@@ -72,13 +97,13 @@ table {
     padding: 0;
 
     li {
-      border-radius: 100px;
       align-items: center;
-      background-color: var(--pagination-li-background);
-      color: var(--pagination-li-color);
+      background-color: var(--pagination-li-background, #fff);
+      border-radius: 100px;
+      color: var(--pagination-li-color, #3776c1);
       cursor: pointer;
-      font-size: 0.9rem;
       display: flex;
+      font-size: 0.9rem;
       justify-content: center;
       margin: 5px;
       min-height: 30px;
@@ -86,30 +111,23 @@ table {
       padding: 5px;
 
       &.active {
-        background-color: var(--pagination-active-background);
-        color: var(--pagination-active-color);
+        background-color: var(--pagination-active-background, #3776c1);
+        color: var(--pagination-active-color, #fff);
       }
-
-      /*&:first-child,
-      &:last-child {
-        border: 0;
-        color: magenta;
-        margin: 0;
-      }*/
     }
 
     .previous,
     .next {
+      background-color: var(--pagination-action-background, color(#3776c1 l(+10%)));
       border-radius: 3px;
-      background-color: var(--pagination-action-background);
-      color: var(--pagination-action-color);
+      color: var(--pagination-action-color, #fff);
       font-size: 0.8rem;
       margin: 5px 8px;
       padding: 1px 5px;
 
       &:--disabled {
-        background-color: var(--pagination-disabled-background);
-        color: var(--pagination-disabled-color);
+        background-color: var(--pagination-disabled-background, #929292);
+        color: var(--pagination-disabled-color, color(#fff shade(15%)));
         cursor: default;
       }
     }

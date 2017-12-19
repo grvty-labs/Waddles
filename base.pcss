@@ -1,22 +1,22 @@
-body, html {
-  background-color: var(--main-pane-background);
+body,
+html {
+  background-color: var(--body-background-color);
   color: var(--body-font-color);
   font-family: var(--main-font);
   font-size: var(--global-font-size);
   line-height: var(--global-lineheight);
   margin: 0;
+}
 
-  & :any-link{
-    color: var(--main-link-color);
-    text-decoration: none;
+:--any-link {
+  color: var(--links-main-font-color);
+  text-decoration: none;
 
-    &.secondary{
-      color: var(--secondary-link-color);
-    }
+  &.secondary {
+    color: var(--links-secondary-font-color);
   }
 }
 
-div,
-form {
+* {
   box-sizing: border-box;
 }
