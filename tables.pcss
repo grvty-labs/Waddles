@@ -38,14 +38,10 @@ table {
         word-wrap: break-word;
       }
 
-      /*&:last-child {
-        border-bottom: 0;
-        height: 4.5em;
-
-        td {
-          padding-bottom: 0.75em;
-        }
-      }*/
+      &:hover,
+      &:--enter-action {
+        background-color: var(--table-row-hover-background);
+      }
     }
   }
 
@@ -69,7 +65,7 @@ table {
       tr {
         th,
         td {
-          &:last-of-type {
+          &:last-child {
             position: relative;
             width: 4.375em;
           }
