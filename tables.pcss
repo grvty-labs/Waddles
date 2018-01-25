@@ -73,62 +73,62 @@ table {
       }
     }
   }
-}
 
-.pagination {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin: 1rem 0;
-  width: 100%;
-
-  .legend {
-    font-weight: bolder;
-    margin-right: 1rem;
-  }
-
-  ul {
+  ~ .pagination {
     align-items: center;
     display: flex;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    width: 100%;
 
-    li {
-      align-items: center;
-      background-color: var(--pagination-li-background, #fff);
-      border-radius: 100px;
-      color: var(--pagination-li-color, #3776c1);
-      cursor: pointer;
-      display: flex;
-      font-size: 0.9rem;
-      justify-content: center;
-      margin: 5px;
-      min-height: 30px;
-      min-width: 30px;
-      padding: 5px;
-
-      &.active {
-        background-color: var(--pagination-active-background, #3776c1);
-        color: var(--pagination-active-color, #fff);
-      }
+    .legend {
+      font-weight: bolder;
+      margin-right: 1rem;
     }
 
-    .previous,
-    .next {
-      background-color: var(--pagination-action-background, color(#3776c1 l(+10%)));
-      border-radius: 3px;
-      color: var(--pagination-action-color, #fff);
-      font-size: 0.8rem;
-      margin: 5px 8px;
-      padding: 1px 5px;
+    ul {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
 
-      &:--disabled {
-        background-color: var(--pagination-disabled-background, #929292);
-        color: var(--pagination-disabled-color, color(#fff shade(15%)));
-        cursor: default;
+      li {
+        align-items: center;
+        background-color: var(--pagination-li-background, #fff);
+        border-radius: 100px;
+        color: var(--pagination-li-color, #3776c1);
+        cursor: pointer;
+        display: flex;
+        font-size: 0.9rem;
+        justify-content: center;
+        margin: 5px;
+        min-height: 30px;
+        min-width: 30px;
+        padding: 5px;
+
+        &.active {
+          background-color: var(--pagination-active-background, #3776c1);
+          color: var(--pagination-active-color, #fff);
+        }
+      }
+
+      .previous,
+      .next {
+        background-color: var(--pagination-action-background, color(#3776c1 l(+10%)));
+        border-radius: 3px;
+        color: var(--pagination-action-color, #fff);
+        font-size: 0.8rem;
+        margin: 5px 8px;
+        padding: 1px 5px;
+
+        &:--disabled {
+          background-color: var(--pagination-disabled-background, #929292);
+          color: var(--pagination-disabled-color, color(#fff shade(15%)));
+          cursor: default;
+        }
       }
     }
   }
