@@ -64,6 +64,7 @@
 
   &.main {
     background-color: var(--button-main-background);
+    border: 1px solid var(--button-main-border-color);
     color: var(--button-main-font-color);
 
     &:hover,
@@ -74,6 +75,7 @@
 
   &.discrete {
     background-color: var(--button-discrete-background);
+    border: 1px solid var(--button-discrete-border-color);
     color: var(--button-discrete-font-color);
 
     &:hover,
@@ -89,8 +91,9 @@
   }
 
   &.secondary {
-    background-color: var(--button-secondary-background, #00d3a7);
-    color: var(--button-secondary-font-color, #fff);
+    background-color: var(--button-secondary-background);
+    border: 1px solid var(--button-secondary-border-color);
+    color: var(--button-secondary-font-color);
 
     &:hover,
     &:--enter-action {
@@ -115,7 +118,7 @@
 
     &:hover,
     &:--enter-action {
-      color: var(--button-icon-hover-font-color, #5969e1);
+      color: var(--button-icon-hover-font-color);
     }
   }
 
@@ -125,7 +128,7 @@
 
     &:hover,
     &:--enter-action {
-      color: var(--button-icon-hover-font-color, #5969e1);
+      color: var(--button-icon-hover-font-color);
     }
   }
 
