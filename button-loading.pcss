@@ -1,0 +1,143 @@
+.progress-button {
+  position: relative;
+  text-align: center;
+
+  > :--button {
+    /* background: transparent; */
+    /* border: 2px solid currentColor; */
+    /* border-radius: 27px; */
+    /* color: currentColor; */
+    min-height: 32px;
+    /* padding: 0.7em 1em; */
+    text-align: center;
+    text-decoration: none;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s,
+      border-radius 0.3s,
+      border-width 0.3s,
+      width 0.3s;
+    width: 100%;
+
+    span {
+      /* display: inherit; */
+      transition: opacity 0.3s 0.1s;
+    }
+
+    .progress-border,
+    svg {
+      height: 32px;
+      left: 0;
+      margin: auto;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      width: 32px;
+
+      path {
+        fill: none;
+        opacity: 0;
+      }
+
+      &.progress-circle {
+        animation: spin 0.9s infinite cubic-bezier(0.085, 0.26, 0.935, 0.71);
+
+        path {
+          stroke: currentColor;
+          stroke-width: 5;
+        }
+      }
+
+      &.checkmark,
+      &.cross {
+        path {
+          stroke: #fff;
+          stroke-linecap: round;
+          stroke-width: 4;
+        }
+      }
+    }
+
+    .progress-border {
+      border: 3.5px solid #ddd;
+      border-radius: 100px;
+      opacity: 0;
+      padding: 0;
+      transition: opacity 0.15s 0.1s;
+    }
+  }
+
+  &.disabled {
+    > :--button {
+      cursor: not-allowed;
+    }
+  }
+
+  &.success,
+  &.error,
+  &.loading {
+    > :--button {
+      span {
+        /* display: none; */
+        opacity: 0;
+        transition: opacity 0.05s;
+      }
+    }
+  }
+
+  &.loading {
+    > :--button {
+      background-color: transparent;
+      cursor: wait;
+
+      .progress-border {
+        opacity: 1;
+      }
+
+      .progress-circle {
+        > path {
+          opacity: 1;
+          transition: opacity 0.15s 0.3s;
+        }
+      }
+    }
+  }
+
+  &.success {
+    > :--button {
+      background-color: #A0D468;
+      border-color: #A0D468;
+
+      .checkmark {
+        > path {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.error {
+    > :--button {
+      background-color: #ED5565;
+      border-color: #ED5565;
+
+      .cross {
+        > path {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center center;
+  }
+
+  to {
+    transform: rotate(360deg);
+    transform-origin: center center;
+  }
+}
